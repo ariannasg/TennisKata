@@ -12,6 +12,23 @@
 * [License](#license)
 
 ## Description
+http://agilekatas.co.uk/katas/Tennis-Kata
+```
+Winning a Point Increases Score Correctly
+As a library user
+I want the score to increase when a player wins a point
+So that I can display the current score correctly
+
+Given the score is 0:0
+When the server wins a point
+Then the score is 15:0
+Given the score is 15:15
+When the receiver wins a point
+Then the score is 15:30
+Given the score is 30:30
+When the server wins a point
+Then the score is 40:30
+```
 We want a program that can be used to score a tennis game, so we can use it for all of the tennis related endeavours we plan to undertake in the future. To begin with, we're going to need a way to update the score when a player wins a point, see what the current score is after each service, and see if their is a winner based on the current score and the rules below.
 
 1. A game is won by the first player to have won at least four points in total and at least two points more than the opponent.
