@@ -4,8 +4,23 @@ namespace TennisKata;
 
 class TennisScorer
 {
-    public function getPoints() : string
+    /**
+     * @var string
+     */
+    private $score;
+
+    public function __construct()
     {
-        return 'love, love';
+        $this->score = 'love, love';
+    }
+
+    public function getPoints(): string
+    {
+        return $this->score;
+    }
+
+    public function addPointsToServer(): void
+    {
+        $this->score = 'fifteen, love';
     }
 }

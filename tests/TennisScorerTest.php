@@ -19,4 +19,18 @@ class TennisScorerTest extends TestCase
             'When starting the scorer, we should have the following score: "love, love"'
         );
     }
+
+    public function testServerScoresFifteenPoints(): void
+    {
+        $tennisScorer = new TennisScorer();
+
+        $tennisScorer->addPointsToServer();
+        $resultScore = $tennisScorer->getPoints();
+
+        self::assertEquals(
+            "fifteen, love",
+            $resultScore,
+            'When server scores 15pts and receiver has 0pts, we should have the following score: "fifteen, love"'
+        );
+    }
 }
