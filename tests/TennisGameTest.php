@@ -27,6 +27,8 @@ class TennisGameTest extends TestCase
             [3, 1, 'forty-fifteen'],
             [3, 2, 'forty-thirty'],
             [3, 3, 'deuce'],
+            [4, 4, 'deuce'],
+            [5, 5, 'deuce'],
         ];
     }
 

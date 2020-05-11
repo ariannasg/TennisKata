@@ -34,4 +34,12 @@ class TennisPlayer
     {
         $this->pointsWon++;
     }
+
+    /**
+     * @return int
+     */
+    public function getPointsWon(): int
+    {
+        return $this->pointsWon;
+    }
 }

@@ -28,12 +28,24 @@ class TennisGame
     {
         $serverScore = $this->server->getScore();
         $receiverScore = $this->receiver->getScore();
+        $serverPoints = $this->server->getPointsWon();
+        $receiverPoints = $this->receiver->getPointsWon();
 
-        if ($serverScore === TennisScoreEnum::FORTY && $receiverScore === TennisScoreEnum::FORTY) {
+        if ($this->isDeuce($serverPoints, $receiverPoints)) {
             return TennisScoreEnum::DEUCE;
         }
 
         return $serverScore . '-' . $receiverScore;
+    }
+
+    /**
+     * @param int $serverPoints
+     * @param int $receiverPoints
+     * @return bool
+     */
+    private function isDeuce(int $serverPoints, int $receiverPoints): bool
+    {
+        return $serverPoints === $receiverPoints && $serverPoints >= 3 && $receiverPoints >= 3;
     }
 
 }
