@@ -1,23 +1,26 @@
-[![CI Workflow](https://github.com/ariannasg/php-tdd-template/workflows/CI%20Workflow/badge.svg)](https://github.com/ariannasg/php-tdd-template/actions?query=workflow%3A%22CI+Workflow%22)
+[![CI Workflow](https://github.com/ariannasg/TennisKata/workflows/CI%20Workflow/badge.svg)](https://github.com/ariannasg/TennisKata/actions?query=workflow%3A%22CI+Workflow%22)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](.github/CONTRIBUTING.md)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
-# Project Title
+# Tennis Kata
 
 * [Description](#description)
 * [Objectives](#objectives)
 * [Local setup](#local-setup)
 * [Testing](#testing)
-* [CI/CD](#cicd)
-* [TODOs](./TODO.md)
 * [Contributing](#contributing)
 * [License](#license)
 
 ## Description
-Project description
+We want a program that can be used to score a tennis game, so we can use it for all of the tennis related endeavours we plan to undertake in the future. To begin with, we're going to need a way to update the score when a player wins a point, see what the current score is after each service, and see if their is a winner based on the current score and the rules below.
+
+1. A game is won by the first player to have won at least four points in total and at least two points more than the opponent.
+2. The running score of each game is described in a manner peculiar to tennis: scores from zero to three points are described as “love”, “fifteen”, “thirty”, and “forty” respectively.
+3. If at least three points have been scored by each player, and the scores are equal, the score is “deuce”.
+4. If at least three points have been scored by each side and a player has one more point than their opponent, the score of the game is “advantage” for the player in the lead.
 
 ## Objectives
-Description of project objectives.
+Practice TDD by solving this kata.
 
 ## Local setup
 Follow these instructions to get the project up and running for local development and testing purposes:
@@ -40,12 +43,6 @@ Command for running all tests:
 ```
 make test
 ```
-
-## CI/CD
-Description of CI/CD setup.
-
-## TODOs
-Please see list of [TODOs](TODO.md).
 
 ## Contributing
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for understanding the code of conduct.
