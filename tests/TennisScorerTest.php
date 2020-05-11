@@ -7,20 +7,20 @@ use TennisKata\TennisScorer;
 
 class TennisScorerTest extends TestCase
 {
-    public function testStartScorer(): void
+    public function testBothPlayersHaveZeroPoints(): void
     {
         $tennisScorer = new TennisScorer();
 
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "0,0",
+            "love,love",
             $resultScore,
-            'When starting the scorer, we should have the following score: "0,0"'
+            'When both players have 0pts, we should have the following score: "love,love"'
         );
     }
 
-    public function testServerScoresFifteenPoints(): void
+    public function testServerScoresOnePoint(): void
     {
         $tennisScorer = new TennisScorer();
 
@@ -29,13 +29,13 @@ class TennisScorerTest extends TestCase
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "15,0",
+            "fifteen,love",
             $resultScore,
-            'When server scores 15pts and receiver has 0pts, we should have the following score: "15,0"'
+            'When server scores 1pt and receiver 0pts, we should have the following score: "fifteen,love"'
         );
     }
 
-    public function testServerScoresThirtyPoints(): void
+    public function testServerScoresTwoPoints(): void
     {
         $tennisScorer = new TennisScorer();
 
@@ -45,13 +45,13 @@ class TennisScorerTest extends TestCase
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "30,0",
+            "thirty,love",
             $resultScore,
-            'When server scores 30pts and receiver has 0pts, we should have the following score: "30,0"'
+            'When server scores 2pts and receiver has 0pts, we should have the following score: "thirty,love"'
         );
     }
 
-    public function testServerScoresFortyPoints(): void
+    public function testServerScoresThreePoints(): void
     {
         $tennisScorer = new TennisScorer();
 
@@ -62,9 +62,9 @@ class TennisScorerTest extends TestCase
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "40,0",
+            "forty,love",
             $resultScore,
-            'When server scores 40pts and receiver has 0pts, we should have the following score: "40,0"'
+            'When server scores 3pts and receiver has 0pts, we should have the following score: "forty,love"'
         );
     }
 }
