@@ -22,7 +22,7 @@ class TennisPlayerTest extends TestCase
      * @param int $numberOfPoints
      * @param string $expectedScore
      */
-    public function testScoreWhenPlayerWinsPoints(int $numberOfPoints, string $expectedScore): void
+    public function testTheScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
     {
         $tennisPlayer = new TennisPlayer();
 

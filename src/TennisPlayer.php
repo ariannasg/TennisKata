@@ -5,28 +5,34 @@ namespace TennisKata;
 class TennisPlayer
 {
     /**
-     * @var string
+     * @var int
      */
-    private $score;
+    private $pointsWon;
 
     public function __construct()
     {
-        $this->score = 'love';
+        $this->pointsWon = 0;
     }
 
     public function getScore(): string
     {
-        return $this->score;
+        if ($this->pointsWon === 0) {
+            return 'love';
+        }
+
+        if ($this->pointsWon === 1) {
+            return 'fifteen';
+        }
+
+        if ($this->pointsWon === 2) {
+            return 'thirty';
+        }
+
+        return 'forty';
     }
 
     public function winPoint(): void
     {
-        if ($this->score === 'love') {
-            $this->score = 'fifteen';
-        } elseif ($this->score === 'fifteen') {
-            $this->score = 'thirty';
-        } else {
-            $this->score = 'forty';
-        }
+        $this->pointsWon++;
     }
 }
