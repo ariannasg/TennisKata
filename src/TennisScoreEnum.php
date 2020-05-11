@@ -10,4 +10,6 @@ class TennisScoreEnum
     public const FORTY = 'forty';
     public const DEUCE = 'deuce';
     public const ADVANTAGE = 'advantage';
+    public const SERVER_WON = 'server won';
+    public const RECEIVER_WON = 'receiver won';
 }

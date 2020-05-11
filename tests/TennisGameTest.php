@@ -31,6 +31,8 @@ class TennisGameTest extends TestCase
             [4, 3, 'advantage-forty'],
             [4, 4, 'deuce'],
             [5, 5, 'deuce'],
+            [3, 5, 'receiver won'],
+            [5, 3, 'server won'],
         ];
     }
 
