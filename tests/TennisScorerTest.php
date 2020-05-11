@@ -33,4 +33,20 @@ class TennisScorerTest extends TestCase
             'When server scores 15pts and receiver has 0pts, we should have the following score: "fifteen, love"'
         );
     }
+
+    public function testServerScoresThirtyPoints(): void
+    {
+        $tennisScorer = new TennisScorer();
+
+        $tennisScorer->addPointsToServer();
+        $tennisScorer->addPointsToServer();
+
+        $resultScore = $tennisScorer->getPoints();
+
+        self::assertEquals(
+            "thirty, love",
+            $resultScore,
+            'When server scores 30pts and receiver has 0pts, we should have the following score: "thirty, love"'
+        );
+    }
 }
