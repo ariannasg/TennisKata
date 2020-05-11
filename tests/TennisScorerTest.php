@@ -7,6 +7,15 @@ use TennisKata\TennisScorer;
 
 class TennisScorerTest extends TestCase
 {
+    public function provideServerScoresPoints(): array
+    {
+        return [
+            [1, 'fifteen,love'],
+            [2, 'thirty,love'],
+            [3, 'forty,love'],
+        ];
+    }
+
     public function testBothPlayersHaveZeroPoints(): void
     {
         $tennisScorer = new TennisScorer();
@@ -20,51 +29,25 @@ class TennisScorerTest extends TestCase
         );
     }
 
-    public function testServerScoresOnePoint(): void
+    /**
+     * @dataProvider provideServerScoresPoints
+     * @param int $numberOfPoints
+     * @param string $expectedScore
+     */
+    public function testServerScoresPoints(int $numberOfPoints, string $expectedScore): void
     {
         $tennisScorer = new TennisScorer();
 
-        $tennisScorer->addPointsToServer();
+        for ($i = 1; $i <= $numberOfPoints; $i++) {
+            $tennisScorer->addPointToServer();
+        }
 
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "fifteen,love",
+            $expectedScore,
             $resultScore,
-            'When server scores 1pt and receiver 0pts, we should have the following score: "fifteen,love"'
-        );
-    }
-
-    public function testServerScoresTwoPoints(): void
-    {
-        $tennisScorer = new TennisScorer();
-
-        $tennisScorer->addPointsToServer();
-        $tennisScorer->addPointsToServer();
-
-        $resultScore = $tennisScorer->getPoints();
-
-        self::assertEquals(
-            "thirty,love",
-            $resultScore,
-            'When server scores 2pts and receiver has 0pts, we should have the following score: "thirty,love"'
-        );
-    }
-
-    public function testServerScoresThreePoints(): void
-    {
-        $tennisScorer = new TennisScorer();
-
-        $tennisScorer->addPointsToServer();
-        $tennisScorer->addPointsToServer();
-        $tennisScorer->addPointsToServer();
-
-        $resultScore = $tennisScorer->getPoints();
-
-        self::assertEquals(
-            "forty,love",
-            $resultScore,
-            'When server scores 3pts and receiver has 0pts, we should have the following score: "forty,love"'
+            "When server scores {$numberOfPoints}pts and receiver 0pts, we should have the following score: {$expectedScore}"
         );
     }
 }

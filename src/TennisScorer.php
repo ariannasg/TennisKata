@@ -19,7 +19,7 @@ class TennisScorer
         return $this->score;
     }
 
-    public function addPointsToServer(): void
+    public function addPointToServer(): void
     {
         if ($this->score === 'love,love') {
             $this->score = 'fifteen,love';
