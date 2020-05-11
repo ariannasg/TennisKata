@@ -9,4 +9,5 @@ class TennisScoreEnum
     public const THIRTY = 'thirty';
     public const FORTY = 'forty';
     public const DEUCE = 'deuce';
+    public const ADVANTAGE = 'advantage';
 }
