@@ -7,7 +7,7 @@ use TennisKata\TennisPlayer;
 
 class TennisPlayerTest extends TestCase
 {
-    public function provideScoreWhenWinningPoints(): array
+    public function providePlayerScoreWhenWinningPoints(): array
     {
         return [
             [0, 'love'],
@@ -18,11 +18,11 @@ class TennisPlayerTest extends TestCase
     }
 
     /**
-     * @dataProvider provideScoreWhenWinningPoints
+     * @dataProvider providePlayerScoreWhenWinningPoints
      * @param int $numberOfPoints
      * @param string $expectedScore
      */
-    public function testTheScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
+    public function testThePlayerScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
     {
         $tennisPlayer = new TennisPlayer();
 
