@@ -29,11 +29,11 @@ class TennisGame
         $serverScore = $this->server->getScore();
         $receiverScore = $this->receiver->getScore();
 
-        if ($serverScore === 'forty' && $receiverScore === 'forty') {
-            return 'deuce';
+        if ($serverScore === TennisScoreEnum::FORTY && $receiverScore === TennisScoreEnum::FORTY) {
+            return TennisScoreEnum::DEUCE;
         }
 
-        return $serverScore . ':' . $receiverScore;
+        return $serverScore . '-' . $receiverScore;
     }
 
 }

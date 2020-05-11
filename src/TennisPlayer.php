@@ -10,10 +10,10 @@ class TennisPlayer
     private $pointsWon;
 
     private const POINTS_TO_SCORE_MAPPING = [
-        0 => 'love',
-        1 => 'fifteen',
-        2 => 'thirty',
-        3 => 'forty'
+        0 => TennisScoreEnum::LOVE,
+        1 => TennisScoreEnum::FIFTEEN,
+        2 => TennisScoreEnum::THIRTY,
+        3 => TennisScoreEnum::FORTY
     ];
 
     public function __construct()
