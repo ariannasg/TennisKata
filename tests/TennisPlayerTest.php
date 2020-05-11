@@ -30,12 +30,12 @@ class TennisPlayerTest extends TestCase
             $tennisPlayer->winPoint();
         }
 
-        $resultScore = $tennisPlayer->getScore();
-
+        $score = $tennisPlayer->getScore();
         $pointsString = $numberOfPoints === 1 ? 'point' : 'points';
+
         self::assertEquals(
             $expectedScore,
-            $resultScore,
+            $score,
             "When a player wins {$numberOfPoints} {$pointsString}, the score should be: {$expectedScore}"
         );
     }
