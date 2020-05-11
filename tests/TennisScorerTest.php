@@ -14,9 +14,9 @@ class TennisScorerTest extends TestCase
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "love, love",
+            "0,0",
             $resultScore,
-            'When starting the scorer, we should have the following score: "love, love"'
+            'When starting the scorer, we should have the following score: "0,0"'
         );
     }
 
@@ -25,12 +25,13 @@ class TennisScorerTest extends TestCase
         $tennisScorer = new TennisScorer();
 
         $tennisScorer->addPointsToServer();
+
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "fifteen, love",
+            "15,0",
             $resultScore,
-            'When server scores 15pts and receiver has 0pts, we should have the following score: "fifteen, love"'
+            'When server scores 15pts and receiver has 0pts, we should have the following score: "15,0"'
         );
     }
 
@@ -44,9 +45,26 @@ class TennisScorerTest extends TestCase
         $resultScore = $tennisScorer->getPoints();
 
         self::assertEquals(
-            "thirty, love",
+            "30,0",
             $resultScore,
-            'When server scores 30pts and receiver has 0pts, we should have the following score: "thirty, love"'
+            'When server scores 30pts and receiver has 0pts, we should have the following score: "30,0"'
+        );
+    }
+
+    public function testServerScoresFortyPoints(): void
+    {
+        $tennisScorer = new TennisScorer();
+
+        $tennisScorer->addPointsToServer();
+        $tennisScorer->addPointsToServer();
+        $tennisScorer->addPointsToServer();
+
+        $resultScore = $tennisScorer->getPoints();
+
+        self::assertEquals(
+            "40,0",
+            $resultScore,
+            'When server scores 40pts and receiver has 0pts, we should have the following score: "40,0"'
         );
     }
 }

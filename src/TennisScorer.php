@@ -11,7 +11,7 @@ class TennisScorer
 
     public function __construct()
     {
-        $this->score = 'love, love';
+        $this->score = '0,0';
     }
 
     public function getPoints(): string
@@ -21,11 +21,12 @@ class TennisScorer
 
     public function addPointsToServer(): void
     {
-        if ($this->score === 'love, love') {
-            $this->score = 'fifteen, love';
+        if ($this->score === '0,0') {
+            $this->score = '15,0';
+        } elseif ($this->score === '15,0') {
+            $this->score = '30,0';
         } else {
-            $this->score = 'thirty, love';
+            $this->score = '40,0';
         }
-
     }
 }
