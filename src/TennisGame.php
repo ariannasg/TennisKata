@@ -26,7 +26,14 @@ class TennisGame
 
     public function getScore(): string
     {
-        return $this->server->getScore() . ':' . $this->receiver->getScore();
+        $serverScore = $this->server->getScore();
+        $receiverScore = $this->receiver->getScore();
+
+        if ($serverScore === 'forty' && $receiverScore === 'forty') {
+            return 'deuce';
+        }
+
+        return $serverScore . ':' . $receiverScore;
     }
 
 }

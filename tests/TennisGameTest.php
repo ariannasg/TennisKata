@@ -26,7 +26,7 @@ class TennisGameTest extends TestCase
             [3, 0, 'forty:love'],
             [3, 1, 'forty:fifteen'],
             [3, 2, 'forty:thirty'],
-            [3, 3, 'forty:forty'],
+            [3, 3, 'deuce'],
         ];
     }
 
@@ -46,10 +46,10 @@ class TennisGameTest extends TestCase
         $receiver = new TennisPlayer();
 
         $tennisGame = new TennisGame($server, $receiver);
+
         for ($i = 1; $i <= $serverPointsWon; $i++) {
             $server->winPoint();
         }
-
         for ($i = 1; $i <= $receiverPointsWon; $i++) {
             $receiver->winPoint();
         }
