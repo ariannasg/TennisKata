@@ -6,12 +6,12 @@
     },
     "autoload": {
         "psr-4": {
-            "TennisGame\\": "src/"
+            "TennisKata\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TennisGame\\Test\\": "tests/"
+            "TennisKata\\Test\\": "tests/"
         }
     }
 }
