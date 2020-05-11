@@ -1,13 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace TennisGame\Test;
+namespace TennisKata\Test;
 
 use PHPUnit\Framework\TestCase;
+use TennisKata\TennisScorer;
 
 class TennisScorerTest extends TestCase
 {
-    public function testScorePoints(): void
+    public function testStartScorer(): void
     {
-        self::assertTrue(true);
+        $tennisScorer = new TennisScorer();
+
+        $resultScore = $tennisScorer->getPoints();
+
+        self::assertEquals(
+            "love, love",
+            $resultScore,
+            'When starting the scorer, we should have the following score: "love, love"'
+        );
     }
 }
