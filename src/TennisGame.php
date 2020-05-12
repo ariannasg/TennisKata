@@ -24,25 +24,25 @@ class TennisGame
         $this->receiver = $receiver;
     }
 
+    /**
+     * @return string
+     */
     public function getScore(): string
     {
         if ($this->isDeuce()) {
             return TennisScoreEnum::DEUCE;
         }
-
-        if ($this->bothPlayersScoredAtLeastThreePoints()) {
-            if ($this->serverHasAdvantage()) {
-                return TennisScoreEnum::ADVANTAGE . '-' . $this->receiver->getScore();
-            }
-            if ($this->receiverHasAdvantage()) {
-                return $this->server->getScore() . '-' . TennisScoreEnum::ADVANTAGE;
-            }
-            if ($this->serverIsTheWinner()) {
-                return TennisScoreEnum::SERVER_WON;
-            }
-            if ($this->receiverIsTheWinner()) {
-                return TennisScoreEnum::RECEIVER_WON;
-            }
+        if ($this->serverHasAdvantage()) {
+            return TennisScoreEnum::ADVANTAGE . '-' . $this->receiver->getScore();
+        }
+        if ($this->receiverHasAdvantage()) {
+            return $this->server->getScore() . '-' . TennisScoreEnum::ADVANTAGE;
+        }
+        if ($this->serverIsTheWinner()) {
+            return TennisScoreEnum::SERVER_WON;
+        }
+        if ($this->receiverIsTheWinner()) {
+            return TennisScoreEnum::RECEIVER_WON;
         }
 
         return $this->server->getScore() . '-' . $this->receiver->getScore();
@@ -53,12 +53,8 @@ class TennisGame
      */
     private function isDeuce(): bool
     {
-        return $this->bothPlayersScoredAtLeastThreePoints() && $this->bothPlayersHaveTheSamePoints();
-    }
-
-    private function bothPlayersHaveTheSamePoints(): bool
-    {
-        return $this->server->getPointsWon() === $this->receiver->getPointsWon();
+        return $this->bothPlayersScoredAtLeastThreePoints() &&
+            $this->server->getPointsWon() === $this->receiver->getPointsWon();
     }
 
     /**
@@ -74,7 +70,8 @@ class TennisGame
      */
     private function serverHasAdvantage(): bool
     {
-        return $this->server->getPointsWon() - $this->receiver->getPointsWon() === 1;
+        return $this->bothPlayersScoredAtLeastThreePoints() &&
+            $this->server->getPointsWon() - $this->receiver->getPointsWon() === 1;
     }
 
     /**
@@ -82,7 +79,8 @@ class TennisGame
      */
     private function receiverHasAdvantage(): bool
     {
-        return $this->receiver->getPointsWon() - $this->server->getPointsWon() === 1;
+        return $this->bothPlayersScoredAtLeastThreePoints() &&
+            $this->receiver->getPointsWon() - $this->server->getPointsWon() === 1;
     }
 
     /**
@@ -90,7 +88,8 @@ class TennisGame
      */
     private function serverIsTheWinner(): bool
     {
-        return $this->server->getPointsWon() - $this->receiver->getPointsWon() >= 2;
+        return $this->server->getPointsWon() >= 4 &&
+            $this->server->getPointsWon() - $this->receiver->getPointsWon() >= 2;
     }
 
     /**
@@ -98,6 +97,7 @@ class TennisGame
      */
     private function receiverIsTheWinner(): bool
     {
-        return $this->receiver->getPointsWon() - $this->server->getPointsWon() >= 1;
+        return $this->receiver->getPointsWon() >= 4 &&
+            $this->receiver->getPointsWon() - $this->server->getPointsWon() >= 2;
     }
 }
