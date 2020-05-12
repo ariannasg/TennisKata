@@ -1,0 +1,7 @@
+default:
+  suites:
+    core_features:
+      paths:
+        features: features
+      contexts:
+        - TennisGameContext
