@@ -66,29 +66,22 @@ class TennisGameTest extends TestCase
     {
         $server = new TennisPlayer();
         $receiver = new TennisPlayer();
+        $game = new TennisGame($server, $receiver);
 
-        $tennisGame = new TennisGame($server, $receiver);
-
-        for ($i = 1; $i <= $serverPointsWon; $i++) {
+        for ($i = 0; $i < $serverPointsWon; $i++) {
             $server->winPoint();
         }
-        for ($i = 1; $i <= $receiverPointsWon; $i++) {
+        for ($i = 0; $i < $receiverPointsWon; $i++) {
             $receiver->winPoint();
         }
 
-        $msg = sprintf(
-            'When server wins %d %s and receiver wins %d %s, then the game score should be: "%s"',
-            $serverPointsWon,
-            $serverPointsWon === 1 ? 'point' : 'points',
-            $receiverPointsWon,
-            $receiverPointsWon === 1 ? 'point' : 'points',
-            $expectedGameScore
-        );
-
         self::assertEquals(
             $expectedGameScore,
-            $tennisGame->getScore(),
-            $msg
+            $game->getScore(),
+            sprintf('When server wins %dpt and receiver wins %dpt, then the game score should be: "%s"',
+                $serverPointsWon,
+                $receiverPointsWon,
+                $expectedGameScore)
         );
     }
 }

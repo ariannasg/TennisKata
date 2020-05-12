@@ -33,19 +33,16 @@ class TennisPlayerTest extends TestCase
      */
     public function testTheScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
     {
-        $tennisPlayer = new TennisPlayer();
+        $player = new TennisPlayer();
 
-        for ($i = 1; $i <= $numberOfPoints; $i++) {
-            $tennisPlayer->winPoint();
+        for ($i = 0; $i < $numberOfPoints; $i++) {
+            $player->winPoint();
         }
-
-        $score = $tennisPlayer->getScore();
-        $pointsString = $numberOfPoints === 1 ? 'point' : 'points';
 
         self::assertEquals(
             $expectedScore,
-            $score,
-            "When a player wins {$numberOfPoints} {$pointsString}, the score should be: {$expectedScore}"
+            $player->getScore(),
+            "When a player wins {$numberOfPoints}pt, the score should be: {$expectedScore}"
         );
     }
 
@@ -56,16 +53,16 @@ class TennisPlayerTest extends TestCase
      */
     public function testTheCountOfPointsWon(int $numberOfPoints, int $expectedPointsWon): void
     {
-        $tennisPlayer = new TennisPlayer();
+        $player = new TennisPlayer();
 
-        for ($i = 1; $i <= $numberOfPoints; $i++) {
-            $tennisPlayer->winPoint();
+        for ($i = 0; $i < $numberOfPoints; $i++) {
+            $player->winPoint();
         }
 
-        $msg = sprintf('When a player wins %d %s, the number of points won should be: %d',
-            $numberOfPoints,
-            $numberOfPoints === 1 ? 'point' : 'points',
-            $expectedPointsWon);
-        self::assertEquals($expectedPointsWon, $tennisPlayer->getPointsWon(), $msg);
+        self::assertEquals(
+            $expectedPointsWon,
+            $player->getPointsWon(),
+            "When a player wins {$numberOfPoints}, the number of points won should be: {$expectedPointsWon}"
+        );
     }
 }

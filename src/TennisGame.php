@@ -14,7 +14,6 @@ class TennisGame
     private $receiver;
 
     /**
-     * TennisGame constructor.
      * @param TennisPlayer $server
      * @param TennisPlayer $receiver
      */
