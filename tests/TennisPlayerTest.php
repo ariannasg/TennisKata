@@ -7,7 +7,7 @@ use TennisKata\TennisPlayer;
 
 class TennisPlayerTest extends TestCase
 {
-    public function providePlayerScoreWhenWinningPoints(): array
+    public function provideScoreWhenWinningPoints(): array
     {
         return [
             [0, 'love'],
@@ -17,12 +17,21 @@ class TennisPlayerTest extends TestCase
         ];
     }
 
+    public function provideCountOfPointsWon(): array
+    {
+        return [
+            [1, 1],
+            [2, 2],
+            [5, 5],
+        ];
+    }
+
     /**
-     * @dataProvider providePlayerScoreWhenWinningPoints
+     * @dataProvider provideScoreWhenWinningPoints
      * @param int $numberOfPoints
      * @param string $expectedScore
      */
-    public function testThePlayerScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
+    public function testTheScoreWhenWinningPoints(int $numberOfPoints, string $expectedScore): void
     {
         $tennisPlayer = new TennisPlayer();
 
@@ -38,5 +47,25 @@ class TennisPlayerTest extends TestCase
             $score,
             "When a player wins {$numberOfPoints} {$pointsString}, the score should be: {$expectedScore}"
         );
+    }
+
+    /**
+     * @dataProvider provideCountOfPointsWon
+     * @param int $numberOfPoints
+     * @param int $expectedPointsWon
+     */
+    public function testTheCountOfPointsWon(int $numberOfPoints, int $expectedPointsWon): void
+    {
+        $tennisPlayer = new TennisPlayer();
+
+        for ($i = 1; $i <= $numberOfPoints; $i++) {
+            $tennisPlayer->winPoint();
+        }
+
+        $msg = sprintf('When a player wins %d %s, the number of points won should be: %d',
+            $numberOfPoints,
+            $numberOfPoints === 1 ? 'point' : 'points',
+            $expectedPointsWon);
+        self::assertEquals($expectedPointsWon, $tennisPlayer->getPointsWon(), $msg);
     }
 }
