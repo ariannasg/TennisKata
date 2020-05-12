@@ -35,9 +35,7 @@ class TennisPlayerTest extends TestCase
     {
         $player = new TennisPlayer();
 
-        for ($i = 0; $i < $numberOfPoints; $i++) {
-            $player->winPoint();
-        }
+        $player->setPointsWon($numberOfPoints);
 
         self::assertEquals(
             $expectedScore,

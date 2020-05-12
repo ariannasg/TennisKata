@@ -40,4 +40,12 @@ class TennisPlayer
     {
         return $this->pointsWon;
     }
+
+    /**
+     * @param int $pointsWon
+     */
+    public function setPointsWon(int $pointsWon): void
+    {
+        $this->pointsWon = $pointsWon;
+    }
 }
