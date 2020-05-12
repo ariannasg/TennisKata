@@ -9,13 +9,6 @@ class TennisPlayer
      */
     private $pointsWon;
 
-    private const POINTS_TO_SCORE_MAPPING = [
-        0 => TennisScoreEnum::LOVE,
-        1 => TennisScoreEnum::FIFTEEN,
-        2 => TennisScoreEnum::THIRTY,
-        3 => TennisScoreEnum::FORTY
-    ];
-
     public function __construct()
     {
         $this->pointsWon = 0;
@@ -23,11 +16,16 @@ class TennisPlayer
 
     public function getScore(): string
     {
-        if (array_key_exists($this->pointsWon, self::POINTS_TO_SCORE_MAPPING)) {
-            return self::POINTS_TO_SCORE_MAPPING[$this->pointsWon];
+        switch ($this->pointsWon) {
+            case 0:
+                return TennisScoreEnum::LOVE;
+            case 1:
+                return TennisScoreEnum::FIFTEEN;
+            case 2:
+                return TennisScoreEnum::THIRTY;
+            default:
+                return TennisScoreEnum::FORTY;
         }
-
-        return 'unknown';
     }
 
     public function winPoint(): void
